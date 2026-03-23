@@ -128,6 +128,20 @@ function updateModifiers() {
 function updateClickerImage(){
     //TODO: make the clicker image dynamically update based on how many xpAutoclicker per second in the game.
     // you can make your own images or you can use the resources in /img
+    const currentImage = clickBtn.children[0].src;
+    let newImage;
+    if (xpAutoClickerPerSecond < 10) {
+        newImage = "img/student.png"
+    } else if(xpAutoClickerPerSecond < 20){
+        newImage = "img/studentCoffee.png"
+    } else if(xpAutoClickerPerSecond < 30){
+        newImage = "img/studentCoffeeCoffee.png"
+    } else {
+        newImage = "img/studentCoffeeCoffeeDev.png"
+    }
+    if (currentImage !== newImage) {
+        clickBtn.children[0].src = newImage;
+    }
 }
 function updateEverything(){
     updateModifiers()
