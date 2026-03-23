@@ -5,12 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin, Study Clicker</title>
 
-    <link href="/css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <script src="script.js" defer></script>
+    <script src="../js/bootstrap.js" defer></script>
 
 </head>
 <body >
+<div class="container">
+    <nav class="navbar">
+        <a class="nav-link" href="/"> DATA1700 Clicker </a>
+        <a class="nav-link" href="/admin/index.html">Admin</a>
+    </nav>
+    <h1> ADMIN View</h1>
+    <div class="row">
+        <h2>Upgrades</h2>
+        <table class="table" id="upgrades">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Title</th>
+                <th scope="col">Cost</th>
+                <th scope="col">CPS multiplier</th>
+                <th scope="col">Click multiplier</th>
+            </tr>
+            </thead>
+        </table>
+        <h2>Auto-Clickers</h2>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-auto-clicker-modal">
+            New
+        </button>
 
-<h1> ADMIN View</h1>
+        <div class="modal fade" id="new-auto-clicker-modal" tabindex="-1" aria-labelledby="new-auto-clicker-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="new-auto-clicker-modal-label">New Auto-Clicker</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="new-auto-clicker" action="/api/autoclickers" method="POST">
+                            <label for="name-input" class="form-label">Name</label>
+                            <input class="form-control" type="text" id="name-input" name="name">
+                            <label for="title-input" class="form-label">Title</label>
+                            <input class="form-control" type="text" id="title-input" name="title">
+                            <label for="cost-input" class="form-label">Cost</label>
+                            <input class="form-control" type="number" id="cost-input" name="cost">
+                            <label for="cps-input" class="form-label">CPS</label>
+                            <input class="form-control" type="number" id="cps-input" name="cps">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" value="Create">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table" id="auto-clickers">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">CPS</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
 <!--TODO: create the HTML forms and tables etc required to maintain the entities of upgrades and Autoclicker -->
 
 </body>
