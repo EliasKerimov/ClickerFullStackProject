@@ -19,6 +19,44 @@
     <h1> ADMIN View</h1>
     <div class="row">
         <h2>Upgrades</h2>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-upgrade-modal">
+                New
+            </button>
+
+
+        <div class="modal fade" id="new-upgrade-modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+
+                    <div class="modal-header">
+                        <h5 class="modal-title">Upgrade</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+
+                    <div class="modal-body">
+                        <form id="upgrade" action="/api/upgrades" method="POST">
+                            <label for="name-input" class="form-label">Name</label>
+                            <input class="form-control" type="text" id="upgrade-name" name="name">
+                            <label for="title-input" class="form-label">Title</label>
+                            <input class="form-control" type="text" id="upgrade-title" name="title">
+                            <label for="cost-input" class="form-label">Cost</label>
+                            <input class="form-control" type="number" id="upgrade-cost" name="cost">
+                            <label for="cps-input" class="form-label">CPS</label>
+                            <input class="form-control" type="number" id="upgrade-cps" name="cps">
+
+                        </form>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="submit" form="upgrade">Create</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <table class="table" id="upgrades">
             <thead>
             <tr>
