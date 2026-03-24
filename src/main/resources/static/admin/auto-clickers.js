@@ -19,27 +19,36 @@ form.addEventListener("submit" , e => {
     const title = form.querySelector("input[name=title]").value
     const cost = form.querySelector("input[name=cost]").value
     const cps = form.querySelector("input[name=cps]").value
+
     const promise = id === "" ? createAutoClicker(name, title, cost, cps) : updateAutoClicker(id, name, title, cost, cps)
     promise.then(async () => {
         bootstrap.Modal.getInstance(document.getElementById("auto-clicker-modal")).hide()
         await updateTable()
-    }).catch(err => {console.log(err)})
+        showPrimaryToast(id === "" ? "Auto-clicker created" : "Auto-clicker updated")
+    }).catch(err => showErrorToast(err.message))
 })
 
 async function createAutoClicker(name, title, cost, cps) {
-    return fetch(BASE_URL, {
+    const res = await fetch(BASE_URL, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({name, title, cost, cps}),
     })
+    if (!res.ok) throw new Error("Could not create: " + (await res.json()).error)
 }
 
 async function updateAutoClicker(id, name, title, cost, cps) {
-    return fetch(BASE_URL + "/" + id, {
+    const res = await fetch(BASE_URL + "/" + id, {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({name, title, cost, cps})
     })
+    if (!res.ok) throw new Error("Could not update: " + (await res.json()).error)
+}
+
+async function deleteAutoClicker(autoClicker) {
+    const res = await fetch(BASE_URL + "/" + autoClicker.id, {method: "DELETE"})
+    if (!res.ok) throw new Error("Could not delete: " + (await res.json()).error)
 }
 
 async function getAutoClickers() {
@@ -76,7 +85,10 @@ function buildDeleteButton(autoClicker) {
     deleteButton.textContent = "🗑"
     deleteButton.addEventListener("click", () => {
         if(confirm("Are you sure?")){
-            deleteAutoClicker(autoClicker).then(updateTable)
+            deleteAutoClicker(autoClicker)
+                .then(updateTable)
+                .then(() => showPrimaryToast("Auto-clicker deleted"))
+                .catch(err => showErrorToast(err.message))
         }
     })
     return deleteButton
@@ -101,11 +113,6 @@ function fillForm(autoClicker) {
     })
 }
 
-async function deleteAutoClicker(autoClicker) {
-    return fetch(BASE_URL + "/" + autoClicker.id, {
-        method: "DELETE",
-    })
-}
 
 
 updateTable()
