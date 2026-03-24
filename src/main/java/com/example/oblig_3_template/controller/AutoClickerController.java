@@ -38,7 +38,7 @@ public class AutoClickerController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Void> update(@PathVariable int id, @RequestBody AutoClicker data) {
+    public ResponseEntity<Void> update(@PathVariable("id") int id, @RequestBody AutoClicker data) {
         for (AutoClicker ac : autoClickers) {
             if (ac.getId() == id) {
                 ac.setName(data.getName());
