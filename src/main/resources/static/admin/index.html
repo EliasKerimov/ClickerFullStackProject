@@ -6,7 +6,7 @@
     <title>Admin, Study Clicker</title>
 
     <link href="../css/bootstrap.css" rel="stylesheet" />
-    <script src="script.js" defer></script>
+    <script src="auto-clickers.js" defer></script>
     <script src="../js/bootstrap.js" defer></script>
 
 </head>
@@ -31,20 +31,23 @@
             </tr>
             </thead>
         </table>
-        <h2>Auto-Clickers</h2>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#new-auto-clicker-modal">
-            New
-        </button>
-
-        <div class="modal fade" id="new-auto-clicker-modal" tabindex="-1" aria-labelledby="new-auto-clicker-modal-label" aria-hidden="true">
+        <div class="row">
+            <h2 class="col-auto">Auto-Clickers</h2>
+            <button id="new-auto-clicker" type="button" class="btn btn-primary col-auto my-0" data-bs-toggle="modal" data-bs-target="#auto-clicker-modal">
+                New
+            </button>
+        </div>
+        <hr class="mt-3">
+        <div class="modal fade" id="auto-clicker-modal" tabindex="-1" aria-labelledby="auto-clicker-modal-label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="new-auto-clicker-modal-label">New Auto-Clicker</h1>
+                        <h1 class="modal-title fs-5" id="auto-clicker-modal-label">Auto-Clicker</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form id="new-auto-clicker" action="/api/autoclickers" method="POST">
+                        <form id="auto-clicker-form">
+                            <input type="hidden" id="id-input" name="id">
                             <label for="name-input" class="form-label">Name</label>
                             <input class="form-control" type="text" id="name-input" name="name">
                             <label for="title-input" class="form-label">Title</label>
@@ -55,7 +58,7 @@
                             <input class="form-control" type="number" id="cps-input" name="cps">
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <input type="submit" class="btn btn-primary" value="Create">
+                                <input type="submit" class="btn btn-primary" value="Save">
                             </div>
                         </form>
                     </div>
