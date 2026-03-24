@@ -102,7 +102,7 @@ function fillForm(autoClicker) {
 }
 
 async function deleteAutoClicker(autoClicker) {
-    return fetch(BASE_URL + "/autoclickers/" + autoClicker.id, {
+    return fetch(BASE_URL + "/" + autoClicker.id, {
         method: "DELETE",
     })
 }
