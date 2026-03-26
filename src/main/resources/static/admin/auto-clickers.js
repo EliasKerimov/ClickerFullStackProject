@@ -127,6 +127,6 @@ function fillForm(autoClicker) {
     })
 }
 
-
-
-updateTable()
+document.addEventListener("DOMContentLoaded", async () => {
+    await updateTable();
+})
