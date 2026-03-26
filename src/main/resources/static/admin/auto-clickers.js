@@ -1,6 +1,7 @@
 const BASE_URL = "http://localhost:8080/api/autoclickers"
 const AUTO_CLICKER_FIELDS = ["id", "name", "title", "cost", "cps"]
 const form = document.getElementById("auto-clicker-form")
+const modal = document.getElementById("auto-clicker-modal")
 const modalLabel = document.getElementById("auto-clicker-modal-label")
 const newButton = document.getElementById("new-auto-clicker")
 const tBody = document.getElementById("auto-clickers").tBodies[0]
@@ -10,6 +11,10 @@ newButton.addEventListener("click", () => {
     AUTO_CLICKER_FIELDS.forEach(field => {
         form.querySelector(`input[name=${field}]`).value = ""
     })
+})
+
+modal.addEventListener("shown.bs.modal", () => {
+    form.querySelector("input:not([type=hidden])").focus()
 })
 
 form.addEventListener("submit" , e => {
@@ -27,6 +32,10 @@ form.addEventListener("submit" , e => {
         showPrimaryToast(id === "" ? "Auto-clicker created" : "Auto-clicker updated")
     }).catch(err => showErrorToast(err.message))
 })
+
+function trId(autoClicker){
+    return "auto-clicker" + autoClicker.id
+}
 
 async function createAutoClicker(name, title, cost, cps) {
     const res = await fetch(BASE_URL, {
@@ -56,15 +65,16 @@ async function getAutoClickers() {
 }
 
 async function updateTable() {
-    const clickers = await getAutoClickers();
+    const autoClickers = await getAutoClickers();
     tBody.innerHTML = ""
-    clickers.forEach(autoClicker => {
+    autoClickers.forEach(autoClicker => {
         tBody.appendChild(buildRow(autoClicker))
     })
 }
 
 function buildRow(autoClicker) {
     const tr = document.createElement("tr")
+    tr.setAttribute("id", trId(autoClicker))
 
     AUTO_CLICKER_FIELDS.forEach(field => {
         const td = document.createElement("td")
@@ -72,9 +82,11 @@ function buildRow(autoClicker) {
         tr.appendChild(td)
     })
     const actionTd = document.createElement("td")
-    actionTd.classList.add("d-flex", "gap-2")
-    actionTd.appendChild(buildDeleteButton(autoClicker))
-    actionTd.appendChild(buildEditButton(autoClicker))
+    const actionDiv = document.createElement("div")
+    actionTd.appendChild(actionDiv)
+    actionDiv.classList.add("d-flex", "gap-2")
+    actionDiv.appendChild(buildDeleteButton(autoClicker))
+    actionDiv.appendChild(buildEditButton(autoClicker))
     tr.appendChild(actionTd)
     return tr
 }
@@ -86,8 +98,10 @@ function buildDeleteButton(autoClicker) {
     deleteButton.addEventListener("click", () => {
         if(confirm("Are you sure?")){
             deleteAutoClicker(autoClicker)
-                .then(updateTable)
-                .then(() => showPrimaryToast("Auto-clicker deleted"))
+                .then(() => {
+                    document.getElementById(trId(autoClicker)).remove()
+                    showPrimaryToast("Auto-clicker deleted")
+                })
                 .catch(err => showErrorToast(err.message))
         }
     })
