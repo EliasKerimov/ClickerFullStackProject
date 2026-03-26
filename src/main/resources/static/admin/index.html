@@ -9,13 +9,18 @@
     <script src="../js/bootstrap.js" defer></script>
     <script src="auto-clickers.js" defer></script>
     <script src="toast.js" defer></script>
-
 </head>
-<body >
+<body>
 <div class="container">
-    <nav class="navbar">
-        <a class="nav-link" href="/"> DATA1700 Clicker </a>
-        <a class="nav-link" href="/admin/index.html">Admin</a>
+    <nav class="navbar navbar-expand-sm border-bottom border-2 border-black py-3 mb-4">
+        <ul class="navbar-nav mx-auto text-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="/"> DATA1700 Clicker </a>
+            </li>
+            <li class="nav-item border border-dark border-2 rounded">
+                <a class="nav-link active" href="/admin/index.html">Admin</a>
+            </li>
+        </ul>
     </nav>
     <div class="toast-container position-fixed end-0 me-4" id="toast-container"></div>
     <h1> ADMIN View</h1>
@@ -71,13 +76,12 @@
             </tr>
             </thead>
         </table>
-        <div class="row">
-            <h2 class="col-auto">Auto-Clickers</h2>
-            <button id="new-auto-clicker" type="button" class="btn btn-primary col-auto my-0" data-bs-toggle="modal" data-bs-target="#auto-clicker-modal">
+        <div class="text-center w-100 d-flex justify-content-center align-items-center gap-4 mb-3">
+            <h2>Auto-Clickers</h2>
+            <button id="new-auto-clicker" type="button" class="btn btn-sm  h-75 btn-primary" data-bs-toggle="modal" data-bs-target="#auto-clicker-modal">
                 New
             </button>
         </div>
-        <hr class="mt-3">
         <div class="modal fade" id="auto-clicker-modal" tabindex="-1" aria-labelledby="auto-clicker-modal-label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -89,9 +93,9 @@
                         <form id="auto-clicker-form">
                             <input type="hidden" id="id-input" name="id">
                             <label for="name-input" class="form-label">Name</label>
-                            <input class="form-control" type="text" id="name-input" name="name">
+                            <input class="form-control" type="text" id="name-input" name="name" maxlength="50">
                             <label for="title-input" class="form-label">Title</label>
-                            <input class="form-control" type="text" id="title-input" name="title">
+                            <input class="form-control" type="text" id="title-input" name="title" maxlength="50">
                             <label for="cost-input" class="form-label">Cost</label>
                             <input class="form-control" type="number" id="cost-input" name="cost">
                             <label for="cps-input" class="form-label">CPS</label>
@@ -106,12 +110,12 @@
             </div>
         </div>
 
-        <table class="table" id="auto-clickers">
+        <table class="table table-striped shadow text-center align-middle" id="auto-clickers">
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Title</th>
+                    <th scope="col" class="w-50">Name</th>
+                    <th scope="col" class="w-50">Title</th>
                     <th scope="col">Cost</th>
                     <th scope="col">CPS</th>
                     <th scope="col">Actions</th>

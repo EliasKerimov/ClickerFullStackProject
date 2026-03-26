@@ -13,11 +13,19 @@
 <body>
 <div class="container">
     <!-- TODO:; make this into a navbar-->
-    <a class="" href="/"> DATA1700 Clicker </a>
-    <a class="nav-link" href="/admin/index.html">Admin</a>
+    <nav class="navbar navbar-expand-sm border-bottom border-2 border-black py-3 mb-4">
+        <ul class="navbar-nav mx-auto text-center">
+            <li class="nav-item border border-dark border-2 rounded">
+                <a class="nav-link active" href="/"> DATA1700 Clicker </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/index.html">Admin</a>
+            </li>
+        </ul>
+    </nav>
     <div class="row">
         <!-- TODO: make it such that this view is responsive to smaller screen sizes-->
-        <div class="col-6 wrapper">
+        <div class="col-lg-6 wrapper">
             <div>
                 <div class="xp text-center"><span id="xpTracker">0</span> Study XP</div>
                 <div class="xpps text-center"><span id="xppsTracker">0</span> Study XP per second</div>
@@ -26,7 +34,7 @@
                 </button>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-lg-6">
             <div class="upgrades">
                 <h2 class="text-center">Upgrades</h2>
                 <div id="upgradeContainer"></div>
