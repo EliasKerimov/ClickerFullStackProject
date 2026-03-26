@@ -1,14 +1,14 @@
 package com.example.oblig_3_template.model;
 
 public class AutoClicker {
-    private int id;
+    private Integer id;
     private String name;
     private String title;
     private int cost;
     private int cps;
 
     public AutoClicker(){}
-    public AutoClicker(int id, String name, String title, int cost, int cps){
+    public AutoClicker(Integer id, String name, String title, int cost, int cps){
         this.id = id;
         this.name = name;
         this.title = title;
