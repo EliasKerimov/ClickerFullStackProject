@@ -130,14 +130,18 @@ function updateClickerImage(){
     // you can make your own images or you can use the resources in /img
     const currentImage = clickBtn.children[0].src;
     let newImage;
-    if (xpAutoClickerPerSecond < 10) {
+    if (xpAutoClickerPerSecond < 25) {
         newImage = "img/student.png"
-    } else if(xpAutoClickerPerSecond < 20){
+    } else if(xpAutoClickerPerSecond < 50){
         newImage = "img/studentCoffee.png"
-    } else if(xpAutoClickerPerSecond < 30){
+    } else if(xpAutoClickerPerSecond < 100){
         newImage = "img/studentCoffeeCoffee.png"
-    } else {
+    } else if(xpAutoClickerPerSecond < 500){
         newImage = "img/studentCoffeeCoffeeDev.png"
+    }else if(xpAutoClickerPerSecond < 1000) {
+        newImage = "img/Graduate.png"
+    }else {
+        newImage = "img/Prof.png"
     }
     if (currentImage !== newImage) {
         clickBtn.children[0].src = newImage;
