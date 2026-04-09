@@ -24,12 +24,13 @@ form.addEventListener("submit" , e => {
     const title = form.querySelector("input[name=title]").value
     const cost = form.querySelector("input[name=cost]").value
     const cps = form.querySelector("input[name=cps]").value
+    const isCreating = id === ""
 
-    const promise = id === "" ? createAutoClicker(name, title, cost, cps) : updateAutoClicker(id, name, title, cost, cps)
+    const promise = isCreating ? createAutoClicker(name, title, cost, cps) : updateAutoClicker(id, name, title, cost, cps)
     promise.then(async () => {
         bootstrap.Modal.getInstance(document.getElementById("auto-clicker-modal")).hide()
         await updateTable()
-        showPrimaryToast(id === "" ? "Auto-clicker created" : "Auto-clicker updated")
+        showPrimaryToast(isCreating ? "Auto-clicker created" : "Auto-clicker updated")
     }).catch(err => showErrorToast(err.message))
 })
 
@@ -61,7 +62,7 @@ async function deleteAutoClicker(autoClicker) {
 }
 
 async function getAutoClickers() {
-    return await fetch(BASE_URL).then(res => {return res.json()})
+    return await fetch(BASE_URL).then(res => res.json())
 }
 
 async function updateTable() {
