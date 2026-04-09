@@ -31,7 +31,7 @@ form.addEventListener("submit" , e => {
         await updateTable()
         showPrimaryToast(id === "" ? "Auto-clicker created" : "Auto-clicker updated")
     }).catch(err => showErrorToast(err.message))
-})
+});
 
 function trId(autoClicker){
     return "auto-clicker" + autoClicker.id
