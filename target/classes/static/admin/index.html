@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin, Study Clicker</title>
+
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <script src="../js/bootstrap.js" defer></script>
+    <script src="toast.js" defer></script>
+    <script type="module" src="auto-clickers.js" defer></script>
+    <script type="module" src="upgrade.js" defer></script>
+
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-expand-sm border-bottom border-2 border-black py-3 mb-4">
+        <ul class="navbar-nav mx-auto text-center">
+            <li class="nav-item">
+                <a class="nav-link active" href="/"> DATA1700 Clicker </a>
+            </li>
+            <li class="nav-item border border-dark border-2 rounded">
+                <a class="nav-link active" href="/admin/index.html">Admin</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="toast-container position-fixed end-0 me-4" id="toast-container"></div>
+    <h2> ADMIN View</h2>
+
+
+    <div class="row">
+        <div class="text-center w-100 d-flex justify-content-center align-items-center gap-4 mb-3">
+        <h2 class="col-auto">Upgrades</h2>
+            <button id="new-upgrade" type="button" class="btn btn-sm  h-75 btn-primary" data-bs-toggle="modal" data-bs-target="#upgrade-modal">
+                New
+            </button>
+    </div>
+
+    <div class="modal fade" id="upgrade-modal" tabindex="-1" aria-labelledby="upgrade-modal-label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="upgrade-modal-label">Upgrade</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="upgrade-form">
+                        <input type="hidden" id="upgrade-id" name="id">
+                        <label for="upgrade-name" class="form-label">Name</label>
+                        <input class="form-control" type="text" id="upgrade-name" name="name">
+                        <label for="upgrade-title" class="form-label">Title</label>
+                        <input class="form-control" type="text" id="upgrade-title" name="title">
+                        <label for="upgrade-cost" class="form-label">Cost</label>
+                        <input class="form-control" type="number" id="upgrade-cost" name="cost">
+                        <label for="upgrade-cps-multi" class="form-label">CPS Multi</label>
+                        <input class="form-control" type="number" step="0.1" id="upgrade-cps-multi" name="cpsMulti">
+                        <label for="upgrade-click-multi" class="form-label">Click Multi</label>
+                        <input class="form-control" type="number" step="0.1" id="upgrade-click-multi" name="clickMulti">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-striped shadow text-center align-middle" id="upgrades">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Title</th>
+                <th scope="col">Cost</th>
+                <th scope="col">CPS multiplier</th>
+                <th scope="col">Click multiplier</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+
+        <div class="text-center w-100 d-flex justify-content-center align-items-center gap-4 mb-3">
+            <h2>Auto-Clickers</h2>
+            <button id="new-auto-clicker" type="button" class="btn btn-sm  h-75 btn-primary" data-bs-toggle="modal" data-bs-target="#auto-clicker-modal">
+                New
+            </button>
+        </div>
+        <div class="modal fade" id="auto-clicker-modal" tabindex="-1" aria-labelledby="auto-clicker-modal-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="auto-clicker-modal-label">Auto-Clicker</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="auto-clicker-form">
+                            <input type="hidden" id="id-input" name="id">
+                            <label for="name-input" class="form-label">Name</label>
+                            <input class="form-control" type="text" id="name-input" name="name">
+                            <label for="title-input" class="form-label">Title</label>
+                            <input class="form-control" type="text" id="title-input" name="title">
+                            <label for="cost-input" class="form-label">Cost</label>
+                            <input class="form-control" type="number" id="cost-input" name="cost">
+                            <label for="cps-input" class="form-label">CPS</label>
+                            <input class="form-control" type="number" id="cps-input" name="cps">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <input type="submit" class="btn btn-primary" value="Save">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-striped shadow text-center align-middle" id="auto-clickers">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col" class="w-50">Name</th>
+                    <th scope="col" class="w-50">Title</th>
+                    <th scope="col">Cost</th>
+                    <th scope="col">CPS</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

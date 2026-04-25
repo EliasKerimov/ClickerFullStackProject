@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Study Clicker</title>
+    <link href="css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="/js/bootstrap.js" defer></script>
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+<div class="container">
+    <!-- TODO:; make this into a navbar-->
+    <nav class="navbar navbar-expand-sm border-bottom border-2 border-black py-3 mb-4">
+        <ul class="navbar-nav mx-auto text-center">
+            <li class="nav-item border border-dark border-2 rounded">
+                <a class="nav-link active" href="/"> DATA1700 Clicker </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/index.html">Admin</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="row">
+        <!-- TODO: make it such that this view is responsive to smaller screen sizes-->
+        <div class="col-lg-6 wrapper">
+            <div>
+                <div class="xp text-center"><span id="xpTracker">0</span> Study XP</div>
+                <div class="xpps text-center"><span id="xppsTracker">0</span> Study XP per second</div>
+                <button id="clickBtn" class="click-btn" type="button" >
+                    <img id="clickImg" src="img/student.png" alt="Student" />
+                </button>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="upgrades">
+                <h2 class="text-center">Upgrades</h2>
+                <div id="upgradeContainer"></div>
+            </div>
+
+            <div class="autoClickers mt-4">
+                <h2 class="text-center">Auto Clickers</h2>
+                <div id="autoclickerContainer"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
