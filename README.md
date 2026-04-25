@@ -1,4 +1,4 @@
-Full-stack project created as part of assignment 3, developed together with @Askauen. 
+Full-stack project created as part of assignment 3 at OsloMet, developed together with @Askauen. 
 
 Askauen dealt with the "AutoClicker" parts while I did "Upgrade" part.
 
