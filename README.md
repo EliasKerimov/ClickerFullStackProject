@@ -1,3 +1,5 @@
-# Oblig-3-template
-Spring boot Tempalte for oblig 3, see canvas for details, 
-there also are some helpfull todos in the code.
+Full-stack project created as part of assignment 3, developed together with @Askauen. 
+
+Askauen dealt with the "AutoClicker" parts while I did "Upgrade" part.
+
+Includes Spring Boot backend, REST API, PostgreSQL database, and JavaScript frontend.
